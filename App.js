@@ -7,12 +7,13 @@
  */
 
 import React,{Component} from 'react';
-import {View, Button,Text, TextInput, StyleSheet, ScrollView} from 'react-native';
+import {View, Button,Text, TextInput, StyleSheet, ScrollView, Image} from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
 import Input from './src/input';
 import Picker from './src/picker';
+import Screen from './assets/images/screen.jpg';
 
 class App extends Component{
   state={
@@ -37,29 +38,11 @@ class App extends Component{
   render(){
     return(
       <View style={styles.mainView}>
-        <Picker/>
-        {/* <TextInput
-          value={this.state.myTextInput}
-          style={styles.input}
-          onChangeText={this.onChangeInput}
-          multiline={true}
-          maxLength={100}
-          autoCapitalize={'none'}
-          editable={true}
-        />
-        <Button 
-          title='Add text input'
-          onPress={this.onAddTextInput}
-        /> 
-          <ScrollView style={{width:'100%'}}>
-          {this.state.alphabet.map((value, index)=>
-            <Text 
-             style={styles.mainText}
-             key={index}>
-               {value}
-               </Text>
-          )}
-        </ScrollView> */}
+       <Image 
+        source={{uri:'https://picsum.photos/seed/picsum/200/300'}}
+        style={styles.image}
+        onLoadEnd={()=>alert('image loaded')}
+       />
       </View>
     )
   }
@@ -99,6 +82,11 @@ const styles=StyleSheet.create({
     marginTop:20,
     fontSize:25,
     padding:10
+  },
+  image:{
+    width:'100%',
+    height:300,
+    resizeMode:'contain'
   }
 })
 export default App;
