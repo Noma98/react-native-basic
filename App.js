@@ -9,23 +9,51 @@
 import React,{Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Header from './src/header';
+import Generator from './src/generator';
+import NumList from './src/numlist';
 
 class App extends Component{
   state={
-    appName:'My fist App'
+    appName:'My fist App',
+    random:[36,999]
   }
+
+  onAddRandomNum=()=>{
+    const randomNum=Math.floor(Math.random()*100)+1;
+    this.setState(prevState=>{
+      return{
+        random:[...prevState.random,randomNum]
+      }
+    })
+  }
+  onNumDelete=(position)=>{
+    const newArray=this.state.random.filter((num,index)=>{
+      return position !=index;
+    })          
+    this.setState({
+      random:newArray
+    });
+  }
+
   render(){
     return(
       <View style={styles.mainView}
         onPress={()=>alert("hohoho")}
       >
-        {/* <Header name={this.state.appName}/> */}
-        <Text 
-        style={styles.mainText}
-        onPress={()=>alert("hihihi")}
-        >
-          Hello world!
-        </Text>
+        <Header name={this.state.appName}/>
+        <View>
+          <Text 
+          style={styles.mainText}
+          onPress={()=>alert("hihihi")}
+          >
+            Hello world!
+          </Text>
+        </View>
+        <Generator add={this.onAddRandomNum}/>
+        <NumList  
+        num={this.state.random}
+        onDelete={this.onNumDelete}
+        />
       </View>
     )
   }
@@ -37,7 +65,7 @@ const styles=StyleSheet.create({
     flex:1,
     paddingTop:50,
     alignItems:'center',
-    justifyContent:'center'
+    // justifyContent:'center'
   },
   subView:{
     backgroundColor:'yellow',
