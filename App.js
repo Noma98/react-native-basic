@@ -38,7 +38,7 @@ class App extends Component{
     return(
       <View style={styles.mainView}>
         <Picker/>
-        <TextInput
+        {/* <TextInput
           value={this.state.myTextInput}
           style={styles.input}
           onChangeText={this.onChangeInput}
@@ -50,8 +50,8 @@ class App extends Component{
         <Button 
           title='Add text input'
           onPress={this.onAddTextInput}
-        />
-        <ScrollView style={{width:'100%'}}>
+        /> 
+          <ScrollView style={{width:'100%'}}>
           {this.state.alphabet.map((value, index)=>
             <Text 
              style={styles.mainText}
@@ -59,7 +59,7 @@ class App extends Component{
                {value}
                </Text>
           )}
-        </ScrollView>
+        </ScrollView> */}
       </View>
     )
   }
