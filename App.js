@@ -7,7 +7,7 @@
  */
 
 import React,{Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
@@ -50,10 +50,19 @@ class App extends Component{
           </Text>
         </View>
         <Generator add={this.onAddRandomNum}/>
+        <ScrollView 
+        style={{width:'100%'}}
+        // onMomentumScrollBegin={()=>alert('begin')}
+        // onMomentumScrollEnd={()=>alert('end')}
+        // onScroll={()=>alert('Scrolling')}
+        // onContentSizeChange={(width,height)=>alert(height)}
+        bounces={false}
+        >
         <NumList  
         num={this.state.random}
         onDelete={this.onNumDelete}
         />
+        </ScrollView>
       </View>
     )
   }
